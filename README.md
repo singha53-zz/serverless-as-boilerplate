@@ -14,7 +14,7 @@ The is repo shows how to set up an Alexa Skill using the serverless framework us
 ```
 serverless config credentials --provider aws --key ACCESS_ID --secret SECRET
 ```
-## Step 2a: create new service
+## Step 2: create new service
   - to see available templates (NOTE: serverless is the same as sls)
 ```
 sls create --help
@@ -34,5 +34,24 @@ sls create --template aws-nodejs --path SERVICE_NAME
  -------'
 
 Serverless: Successfully generated boilerplate for template: "aws-nodejs"
+```
+## Step 3: add new event (trigger lambda functions)
+  - modify *functions* of the serverless.yml file (make sure to get the indentation correct):
+from
+```
+functions:
+  hello:
+    handler: handler.hello
+```
+to
+```
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - alexaSkill
+      - http:
+          path: hello/world
+          method: get
 ```
 
