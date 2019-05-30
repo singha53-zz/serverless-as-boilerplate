@@ -55,3 +55,7 @@ functions:
           method: get
 ```
 
+## Step 4: deploy
+```
+sls deploy
+```
